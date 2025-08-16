@@ -5,7 +5,7 @@ import SplashScreen from "expo-splash-screen";
 
 
 import "../global.css"
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 
 export default function RootLayout() {
   const [fontsLoaded] = useFonts({
@@ -15,14 +15,15 @@ export default function RootLayout() {
     RobotoSerif_700Bold,
   });
 
-  useEffect(() => {
-    const prepare = async () => {
-      await SplashScreen.preventAutoHideAsync();
-      await new Promise((resolve) => setTimeout(resolve, 30000));
-      await SplashScreen.hideAsync();
-    };
-    prepare();
+  const prepare = useCallback(async () => {
+    await SplashScreen.preventAutoHideAsync();
+    await new Promise((resolve) => setTimeout(resolve, 30000));
+    await SplashScreen.hideAsync();
   }, []);
+
+  useEffect(() => {
+    prepare();
+  }, [prepare]);
 
   if (!fontsLoaded) return null;
 

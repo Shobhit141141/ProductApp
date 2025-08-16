@@ -5,6 +5,7 @@
 # ProductAI (Assessment by CanvasAI)
 
 ### AI-Powered Product Suggestion
+
 </div>
   
 <p align="center">
@@ -15,14 +16,15 @@
  • <a href="#introduction">🎯 Introduction</a> <br>
  • <a href="#features">✨ Features</a> <br>
  • <a href="#architecture">🏗️ Architecture</a> <br>
+ • <a href="#key-design-decisions">🧠 Key Design Decisions</a> <br>
  • <a href="#tech-stack">🛠️ Tech Stack</a> <br>
  • <a href="#quick-start">🚀 Quick Start</a> <br>
  • <a href="#future-prospects">🌟 Future Prospects</a> <br>
- • <a href="#acknowledgments">🙏 Acknowledgments</a>
+ • <a href="#acknowledgments">🙏 Acknowledgments</a> <br>
 
 ---
 
-## 🎯 Introduction 
+## 🎯 Introduction
 
 This project leverages the **Gemini REST API** to analyze product catalogs and generate the best matches along with AI-powered top picks based on user prompts.  
 It also includes filters to help users refine their search results, as well as predefined prompts to make it easier for new users to explore and get familiar with the system.
@@ -83,12 +85,29 @@ graph TB
     style D fill:#3498db,color:#fff
 
 ```
+## Key Design Decisions
 
+1. **Modular Architecture**: The application is built with a modular architecture for easy maintenance and scalability and separation of concerns.
+
+2. **Localstorage Management**: Used `AsyncStorage` for persisting Recent searches.
+
+3. **Gemini Integration**: The application integrates with the `Gemini API` using Rest API, Gemini provides free tier models for developers, hence it was preferred for this project.
+
+4. **Modular Design**: The UI is designed to be responsive and adaptive for a seamless experience across different devices.
+
+5. **Theme and Font**: Used `Roboto Serif` for a modern and clean typography, I promoted `B/W theme` as it enhances readability and reduces visual clutter and used gradients + shimmer effects to highlight some important elements to attract user.
+
+6. **Nativewind over UI Library**: Used `NativeWind` for styling which resulted in rapid UI development and avoided overhead of third party UI elements which are prone to performance issues and future deprecations.
+
+7. **Animations**: Used `Moti` for animations to enhance user experience.
+
+8. **Performance Optimization**: Used `useCallback` and `useMemo` for optimizing component re-renders.
 ---
 
 ## 🛠️ Tech Stack
 
 ### Frontend
+
 - **Framework**:React Native (Expo SDK 51+) with TypeScript
 - **Styling**: Tailwind CSS + Nativewind
 - **Navigation**: Expo Router
@@ -101,8 +120,8 @@ graph TB
 
 ## 🚀 Quick Start
 
-
 ### Prerequisites
+
 - **Node.js** 18+ with npm/pnpm/yarn
 - **Expo CLI** (`npm install -g expo-cli`)
 
@@ -111,12 +130,14 @@ graph TB
 ### Installation
 
 1. **Clone the repository**
+
    ```bash
    git clone https://github.com/Shobhit141141/ProductApp.git
    cd ProductApp
    ```
 
 2. **Install dependencies**
+
    ```bash
    npm install
    ```
@@ -126,11 +147,13 @@ graph TB
    Create `.env` files in both `backend` and `frontend` directories:
 
    **Backend `.env`:**
+
    ```env
    GEMINI_API_KEY = "your_gemini_api_keu"
    ```
 
 4. **Run the application**
+
    ```bash
    # Start Expo development server
    npx expo start
@@ -144,10 +167,11 @@ graph TB
    # Start Expo development server (with cleared cache)
    npx expo start --clear
    ```
+
 ---
 
-
 # Project Folder Structure
+
 ```
 📦 root [Project root directory]
 ├── 📂 app [Expo directory for screens]
@@ -170,34 +194,35 @@ graph TB
 ├── 📂 utils [Utility functions and helpers]
 │   └── 📄 getIcon.tsx [Icon utility component/function]
 ├── 📄 global.css [Global CSS styles and variables]
-└── 📄 index.js [Main entry point for the application]   
- 
+└── 📄 index.js [Main entry point for the application]
+
 ```
+
 ---
 
 ## 🌟 Future Prospects (v3.0)
+
 1. **🤖 AI Playground**
-   - Allow users to experiment with **custom LLMs**, system prompts, and fine-tuned configurations.  
+   - Allow users to experiment with **custom LLMs**, system prompts, and fine-tuned configurations.
    - Add a live **chat/playground interface** for testing prompts.
 
 2. **👤 User Login & Authentication**
-   - Implement **secure authentication** using Google/GitHub OAuth or email-password.  
-   - Role-based access (admin, premium user, free user).  
+   - Implement **secure authentication** using Google/GitHub OAuth or email-password.
+   - Role-based access (admin, premium user, free user).
    - Secure token handling with **JWT + Refresh tokens**.
 
 3. **💳 Paid / Free Tier Architecture**
-   - Introduce a **subscription model** with free and premium features.  
-   - Integrate with **Stripe/Razorpay** for in-app purchases and billing.  
+   - Introduce a **subscription model** with free and premium features.
+   - Integrate with **Stripe/Razorpay** for in-app purchases and billing.
    - Rate limiting & feature gating for free users.
 
 4. **🗄️ Real Backend & Database Integration**
-   - Move from mock data to a **production-ready backend** with **Node.js/Express** or **Nest.js**.  
-   - Store structured data in **MongoDB/PostgreSQL**.  
-   - Use **Redis** for caching, notifications, and faster performance.  
+   - Move from mock data to a **production-ready backend** with **Node.js/Express** or **Nest.js**.
+   - Store structured data in **MongoDB/PostgreSQL**.
+   - Use **Redis** for caching, notifications, and faster performance.
    - Enable **real-time sync** with WebSockets (e.g., Socket.IO).
 
-
-##  Acknowledgments
+## Acknowledgments
 
 - **Gemini** for providing excellent models and Rest APIs
 

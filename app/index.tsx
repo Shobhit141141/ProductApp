@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Image, View, TextInput, Text, TouchableOpacity, Dimensions } from "react-native";
 import { Link, router } from "expo-router";
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -47,17 +47,20 @@ export default function HomeScreen() {
   const [error, setError] = useState<string | null>(null);
 
   // Load recent searches from AsyncStorage
-  useEffect(() => {
-    (async () => {
-      const saved = await AsyncStorage.getItem("recentSearches");
-      if (saved) {
-        setRecentSearches(JSON.parse(saved));
-      }
-    })();
+  const loadRecentSearches = useCallback(async () => {
+    const saved = await AsyncStorage.getItem("recentSearches");
+    if (saved) {
+      setRecentSearches(JSON.parse(saved));
+    }
   }, []);
 
-  // Start animation when placeholder is empty
   useEffect(() => {
+    loadRecentSearches();
+  }, [loadRecentSearches]);
+
+  // Start animation when placeholder is empty
+  // Animated placeholder effect using useCallback for setPlaceholder logic
+  const animatePlaceholder = useCallback(() => {
     if (query.length > 0) {
       return;
     }
@@ -78,7 +81,12 @@ export default function HomeScreen() {
       }, 1500);
       return () => clearTimeout(pause);
     }
-  }, [charIndex, promptIndex, query.length]);
+  }, [charIndex, promptIndex, query.length, setPlaceholder, setCharIndex, setPromptIndex]);
+
+  useEffect(() => {
+    const cleanup = animatePlaceholder();
+    return cleanup;
+  }, [animatePlaceholder]);
 
   // Save query to AsyncStorage
   const handleSearch = async () => {

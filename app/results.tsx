@@ -1,15 +1,15 @@
-import { useEffect, useState } from "react";
-import { View, Text, FlatList, Image, TouchableOpacity, TextInput, Modal } from "react-native";
-import { LinearGradient } from "expo-linear-gradient";
-import { router, useLocalSearchParams } from "expo-router";
-import productsData from "../db/db.json";
+import LoadingScreen from "@/components/loading";
 import { buildPrompt, getRecommendations } from "@/service/gemini/geminiApi";
-import { Recommendation, Product } from "@/types";
-import { MotiView } from "moti";
+import { Product, Recommendation } from "@/types";
+import { CategoryIcon } from "@/utils/getIcon";
 import { Feather } from '@expo/vector-icons';
 import Ionicons from '@expo/vector-icons/Ionicons';
-import { CategoryIcon } from "@/utils/getIcon";
-import LoadingScreen from "@/components/loading";
+import { LinearGradient } from "expo-linear-gradient";
+import { router, useLocalSearchParams } from "expo-router";
+import { MotiView } from "moti";
+import { useCallback, useEffect, useMemo, useState } from "react";
+import { FlatList, Image, Modal, Text, TextInput, TouchableOpacity, View } from "react-native";
+import productsData from "../db/db.json";
 
 
 /**
@@ -23,7 +23,6 @@ export default function ResultsScreen() {
 
   // State for recommendations
   const [recommendations, setRecommendations] = useState<Recommendation[]>([]);
-  const [filteredRecommendations, setFilteredRecommendations] = useState<Recommendation[]>([]);
 
   // UI States
   const [loading, setLoading] = useState(true);
@@ -35,23 +34,21 @@ export default function ResultsScreen() {
   const [priceSort, setPriceSort] = useState<"none" | "asc" | "desc">("none");
   const [showOnlyTopPicks, setShowOnlyTopPicks] = useState(false);
 
-  useEffect(() => {
-    const fetchRecommendations = async () => {
-
-      const prompt = buildPrompt(
-        Array.isArray(query) ? query.join(" ") : query ?? "",
-        productsData as Product[]
-      );
-      const aiRecommendations = await getRecommendations(prompt);
-      setRecommendations(aiRecommendations);
-      setFilteredRecommendations(aiRecommendations);
-      setLoading(false);
-    };
-
-    fetchRecommendations();
+  const fetchRecommendations = useCallback(async () => {
+    const prompt = buildPrompt(
+      Array.isArray(query) ? query.join(" ") : query ?? "",
+      productsData as Product[]
+    );
+    const aiRecommendations = await getRecommendations(prompt);
+    setRecommendations(aiRecommendations);
+    setLoading(false);
   }, [query]);
 
   useEffect(() => {
+    fetchRecommendations();
+  }, [fetchRecommendations]);
+
+  const filteredRecommendations = useMemo(() => {
     let filtered = [...recommendations];
 
     // Search filter
@@ -75,12 +72,12 @@ export default function ResultsScreen() {
       filtered.sort((a, b) => (b.product.price || 0) - (a.product.price || 0));
     }
 
-    setFilteredRecommendations(filtered);
+    return filtered;
   }, [recommendations, searchText, priceSort, showOnlyTopPicks]);
 
   if (loading) {
     return (
-        <LoadingScreen />
+      <LoadingScreen />
     );
   }
 
