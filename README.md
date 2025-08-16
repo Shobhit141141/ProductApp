@@ -12,7 +12,8 @@
   <strong>Transform your product discovery with intelligent AI insights</strong><br>
   Automated catalog analysis • Real-time suggestions • Seamless Gemini API integration
 </p>
-  
+
+• <a href="https://snack.expo.dev/@adamnil8267/d280f1" target="_blank" rel="noopener noreferrer">🎉 Live Snack</a> <br>
  • <a href="#introduction">🎯 Introduction</a> <br>
  • <a href="#features">✨ Features</a> <br>
  • <a href="#architecture">🏗️ Architecture</a> <br>
@@ -124,7 +125,8 @@ graph TB
 
 - **Node.js** 18+ with npm/pnpm/yarn
 - **Expo CLI** (`npm install -g expo-cli`)
-
+- **Git** (for cloning the repository)
+- **Expo Go App** (for testing on physical devices)
 ---
 
 ### Installation
