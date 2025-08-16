@@ -1,29 +1,35 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
-import { useFonts } from 'expo-font';
-import { Stack } from 'expo-router';
-import { StatusBar } from 'expo-status-bar';
-import 'react-native-reanimated';
+import { Stack } from "expo-router";
+import { IBMPlexMono_400Regular, IBMPlexMono_600SemiBold } from "@expo-google-fonts/ibm-plex-mono";
+import { RobotoSerif_400Regular, RobotoSerif_700Bold, useFonts } from "@expo-google-fonts/roboto-serif";
+import SplashScreen from "expo-splash-screen";
 
-import { useColorScheme } from '@/hooks/useColorScheme';
+
+import "../global.css"
+import { useEffect } from "react";
 
 export default function RootLayout() {
-  const colorScheme = useColorScheme();
-  const [loaded] = useFonts({
-    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
+  const [fontsLoaded] = useFonts({
+    IBMPlexMono_400Regular,
+    IBMPlexMono_600SemiBold,
+    RobotoSerif_400Regular,
+    RobotoSerif_700Bold,
   });
 
-  if (!loaded) {
-    // Async font loading only occurs in development.
-    return null;
-  }
+  useEffect(() => {
+    const prepare = async () => {
+      await SplashScreen.preventAutoHideAsync();
+      await new Promise((resolve) => setTimeout(resolve, 30000));
+      await SplashScreen.hideAsync();
+    };
+    prepare();
+  }, []);
+
+  if (!fontsLoaded) return null;
 
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="+not-found" />
+      <Stack screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="index" />
+        <Stack.Screen name="results" />
       </Stack>
-      <StatusBar style="auto" />
-    </ThemeProvider>
   );
 }

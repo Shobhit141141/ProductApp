@@ -4,7 +4,7 @@
     "slug": "canvasai",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "./assets/images/logo.png",
     "scheme": "canvasai",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
@@ -13,10 +13,15 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/adaptive-icon.png",
+        "foregroundImage": "./assets/images/logo.png",
         "backgroundColor": "#ffffff"
       },
-      "edgeToEdgeEnabled": true
+      "edgeToEdgeEnabled": true,
+      "permissions": [
+        "android.permission.RECORD_AUDIO",
+        "android.permission.MODIFY_AUDIO_SETTINGS"
+      ],
+      "package": "com.anonymous.canvasai"
     },
     "web": {
       "bundler": "metro",
@@ -28,15 +33,39 @@
       [
         "expo-splash-screen",
         {
-          "image": "./assets/images/splash-icon.png",
-          "imageWidth": 200,
+          "image": "./assets/images/ai.png",
+          "imageWidth": 180,
           "resizeMode": "contain",
-          "backgroundColor": "#ffffff"
+          "backgroundColor": "#ffffff",
+           "dark": {
+            "image": "./assets/images/ai_ivt.png",
+            "imageWidth": 180,
+            "resizeMode": "contain",
+            "backgroundColor": "#000000"
+          }
         }
       ]
     ],
     "experiments": {
       "typedRoutes": true
-    }
+    },
+    "splash": {
+      "image": "./assets/images/ai.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff",
+      "dark": {
+        "image": "./assets/images/ai_ivt.png",
+        "imageWidth": 180,
+        "resizeMode": "contain",
+        "backgroundColor": "#000000"
+      }
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "4a348f62-7f68-4e25-af25-78bfab953079"
+      }
+    },
+    "owner": "adamnil8267"
   }
 }
