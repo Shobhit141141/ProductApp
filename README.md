@@ -13,7 +13,9 @@
   Automated catalog analysis • Real-time suggestions • Seamless Gemini API integration
 </p>
 
-• <a href="https://snack.expo.dev/@adamnil8267/d280f1" target="_blank" rel="noopener noreferrer">🎉 Live Snack</a> <br>
+ • 🚀 [Download APK](https://drive.google.com/file/d/1xRYUzYw1WCygcaIsZXZ-Mafch0u30x6P/view?usp=sharing) 🚀
+
+ • <a href="https://snack.expo.dev/@adamnil8267/d280f1" target="_blank" rel="noopener noreferrer">🎉 Live Snack</a> <br>
  • <a href="#introduction">🎯 Introduction</a> <br>
  • <a href="#features">✨ Features</a> <br>
  • <a href="#architecture">🏗️ Architecture</a> <br>
