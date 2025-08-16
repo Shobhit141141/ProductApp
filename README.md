@@ -12,22 +12,20 @@
   Automated catalog analysis • Real-time suggestions • Seamless Gemini API integration
 </p>
   
-<p align="center">
-  <a href="#-introduction">🎯 Introduction</a> •
-  <a href="#-features">✨ Features</a> •
-  <a href="#-architecture">🏗️ Architecture</a> •
-  <a href="#-tech-stack">🛠️ Tech Stack</a> •
-  <a href="#-quick-start">🚀 Quick Start</a> •
-  <a href="#-future-prospects-v30">🌟 Future Prospects</a> •
-  <a href="#-acknowledgments">🙏 Acknowledgments</a>
-</p>
+ • <a href="#introduction">🎯 Introduction</a> <br>
+ • <a href="#features">✨ Features</a> <br>
+ • <a href="#architecture">🏗️ Architecture</a> <br>
+ • <a href="#tech-stack">🛠️ Tech Stack</a> <br>
+ • <a href="#quick-start">🚀 Quick Start</a> <br>
+ • <a href="#future-prospects">🌟 Future Prospects</a> <br>
+ • <a href="#acknowledgments">🙏 Acknowledgments</a>
 
 ---
 
-## 🎯 Introduction
+## 🎯 Introduction 
 
 This project leverages the **Gemini REST API** to analyze product catalogs and generate the best matches along with AI-powered top picks based on user prompts.  
-It also includes advanced filters to help users refine their search results, as well as predefined prompts to make it easier for new users to explore and get familiar with the system.
+It also includes filters to help users refine their search results, as well as predefined prompts to make it easier for new users to explore and get familiar with the system.
 
 ---
 
@@ -109,13 +107,13 @@ graph TB
 - **Expo CLI** (`npm install -g expo-cli`)
 
 ---
-<!-- 
+
 ### Installation
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/your-username/previwer.git
-   cd productAI
+   git clone https://github.com/Shobhit141141/ProductApp.git
+   cd ProductApp
    ```
 
 2. **Install dependencies**
@@ -146,8 +144,36 @@ graph TB
    # Start Expo development server (with cleared cache)
    npx expo start --clear
    ```
---- -->
+---
 
+
+# Project Folder Structure
+```
+📦 root [Project root directory]
+├── 📂 app [Expo directory for screens]
+│   ├── 📄 layout.tsx [Root layout component for all pages]
+│   ├── 📄 not-found.tsx [Custom 404 error page component]
+│   ├── 📄 index.tsx [Home page component]
+│   └── 📄 results.tsx [results page component]
+├── 📂 assets [Static assets and media files]
+│   ├── 📂 fonts [Custom font files]
+│   └── 📂 images [Image assets for the application]
+├── 📂 components [Reusable native components]
+├── 📂 constants [Application constants and configuration]
+│   └── 📄 constants.ts [Global constants]
+├── 📂 db [Database files and mock data]
+│   └── 📄 db.json [JSON database/mock data file]
+├── 📂 service/gemini [AI service integration]
+│   └── 📄 geminiApi.ts [Google Gemini AI API integration]
+├── 📂 types [TypeScript type definitions]
+│   └── 📄 index.ts [Global TypeScript interfaces and types]
+├── 📂 utils [Utility functions and helpers]
+│   └── 📄 getIcon.tsx [Icon utility component/function]
+├── 📄 global.css [Global CSS styles and variables]
+└── 📄 index.js [Main entry point for the application]   
+ 
+```
+---
 
 ## 🌟 Future Prospects (v3.0)
 1. **🤖 AI Playground**
