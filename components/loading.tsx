@@ -23,6 +23,12 @@ const createRepeatedBadges = (startIndex: number, count: number) => {
   return [...selected, ...selected, ...selected];
 };
 
+/**
+ * Loading Screen Component - loading.tsx
+ * Displays a loading animation with badge strips.
+ * @path /components/loading
+ * @returns TSX.Element
+ */
 function LoadingScreen() {
   const topStrips = [
     { start: 0, reverse: false },

@@ -221,72 +221,6 @@ export default function HomeScreen() {
         </View>
       </View>
 
-      {/* Footer Image */}
-      {/* <View className="flex items-center justify-center mt-8 my-auto">
-        <Image source={require("../assets/images/db_purple.png")} className="w-full h-[260px] object-contain my-auto" />
-      </View> */}
-
-
-      {/* Add 4x4 grid with this apps feature */}
-      {/* <View
-        style={{
-          flexDirection: 'row',
-          flexWrap: 'wrap',
-          justifyContent: 'space-between',
-          paddingHorizontal: 0,
-          paddingTop: 16,
-        }}
-      >
-        {[
-          {
-            name: "Feature 1",
-            icon: <Image source={require("../assets/images/ai_ivt.png")} className="w-12 h-12" />,
-            bg: "#000000" // Pure black
-          },
-          {
-            name: "Feature 2",
-            icon: <FontAwesome name="bolt" size={50} color="white" />,
-            bg: "#000000" // Dark gray
-          },
-          {
-            name: "Feature 3",
-            icon: <Ionicons name="ios-rocket" size={50} color="white" />,
-            bg: "#000000" // Medium dark gray
-          },
-          {
-            name: "Feature 4",
-            icon: <Entypo name="shop" size={50} color="white" />,
-            bg: "#000000" // Lighter dark gray
-          },
-        ].map((feature, index) => (
-          <TouchableOpacity
-            key={index}
-            style={{
-              backgroundColor: feature.bg,
-              borderRadius: 12,
-              alignItems: 'center',
-              justifyContent: 'center',
-              padding: 24,
-              marginBottom: 16,
-              width: itemWidth,
-              height: itemWidth, // Square items
-              shadowColor: '#000',
-              shadowOffset: { width: 0, height: 2 },
-              shadowOpacity: 0.3,
-              shadowRadius: 4,
-              elevation: 5,
-            }}
-          >
-            {feature.icon}
-            <Text
-              className="text-white font-semibold mt-2 text-center text-lg font-bold-serif"
-            >
-              {feature.name}
-            </Text>
-          </TouchableOpacity>
-        ))}
-      </View> */}
-
       {/* Categories */}
       <View className="flex-row flex-wrap items-start justify-center gap-2">
         {[
@@ -335,21 +269,6 @@ export default function HomeScreen() {
             icon: <MaterialIcons name="school" size={16} color="#9ca3af" />,
             query: "Looking for educational tools, e-learning gadgets, books, study devices, and learning aids for students and teachers"
           },
-          // {
-          //   name: "Lifestyle",
-          //   icon: <FontAwesome5 name="redhat" size={14} color="#9ca3af" />,
-          //   query: "Search for lifestyle products including wellness, fashion, accessories, home decor, and gadgets that enhance daily living"
-          // },
-          // {
-          //   name: "Finance",
-          //   icon: <MaterialCommunityIcons name="finance" size={16} color="#9ca3af" />,
-          //   query: "Find financial gadgets, budgeting tools, smart wallets, fintech devices, and products to manage money efficiently"
-          // },
-          // {
-          //   name: "Art",
-          //   icon: <FontAwesome name="paint-brush" size={14} color="#9ca3af" />,
-          //   query: "Looking for art supplies, painting tools, craft materials, drawing gadgets, and creative products for artists and hobbyists"
-          // },
         ].map((cat, index) => (
           <TouchableOpacity
             key={index}
@@ -361,9 +280,6 @@ export default function HomeScreen() {
           </TouchableOpacity>
         ))}
       </View>
-
-
-
 
       {/* Footer credit */}
       <View className="absolute bottom-4 left-0 right-0 flex-row items-center justify-center gap-2"

@@ -1,6 +1,12 @@
 import { Text, View } from "react-native";
 import { Badge } from "@/types";
 
+/**
+ * Badge Component - BadgeStrip.tsx
+ * Displays a badge with an icon and text.
+ * @path /components/BadgeStrip
+ * @returns TSX.Element
+ */
 const BadgeComponent = ({ badge }: { badge: Badge }) => {
 
   return (

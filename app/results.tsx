@@ -16,7 +16,7 @@ import productsData from "../db/db.json";
  * Results Screen - result.jsx
  * Displays the results of the product search.
  * @path /app/results
- * @returns JSX.Element
+ * @returns TSX.Element
  */
 export default function ResultsScreen() {
   const { query } = useLocalSearchParams();
@@ -170,10 +170,6 @@ export default function ResultsScreen() {
                 </TouchableOpacity>
               </View>
             )}
-            {/* <TouchableOpacity onPress={() => clearAllFilters()} className="">
-              <Entypo name="cross" size={20} color="#f87171" />
-              <Text className="text-red-400 text-lg font-serif text-end">Clear All</Text>
-            </TouchableOpacity> */}
           </View>
         )}
       </View>
