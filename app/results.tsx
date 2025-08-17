@@ -51,6 +51,13 @@ export default function ResultsScreen() {
   const filteredRecommendations = useMemo(() => {
     let filtered = [...recommendations];
 
+    // Putting AI Top Picks at the top
+    filtered.sort((a, b) => {
+      if (a.isTopPick && !b.isTopPick) return -1;
+      if (!a.isTopPick && b.isTopPick) return 1;
+      return 0;
+    });
+
     // Search filter
     if (searchText.trim()) {
       filtered = filtered.filter(item =>

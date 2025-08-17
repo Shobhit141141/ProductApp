@@ -71,10 +71,10 @@ export default {
     },
     owner: "adamnil8267",
      updates: {
-      url: "https://u.expo.dev/4a348f62-7f68-4e25-af25-78bfab953079", // 👈 your project update URL
+      url: "https://u.expo.dev/4a348f62-7f68-4e25-af25-78bfab953079", // project update URL
     },
     runtimeVersion: {
-      policy: "appVersion", // 👈 keeps OTA updates tied to app version
+      policy: "appVersion", // keeps OTA updates tied to app version
     },
   }
 };
