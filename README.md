@@ -21,20 +21,21 @@
  • <a href="#architecture">🏗️ Architecture</a> <br>
  • <a href="#key-design-decisions">🧠 Key Design Decisions</a> <br>
  • <a href="#tech-stack">🛠️ Tech Stack</a> <br>
+ • <a href="#project-folder-structure">📂 Project Folder Structure</a> <br>
  • <a href="#quick-start">🚀 Quick Start</a> <br>
  • <a href="#future-prospects">🌟 Future Prospects</a> <br>
  • <a href="#acknowledgments">🙏 Acknowledgments</a> <br>
 
 ---
 
-## 🎯 Introduction
+## Introduction
 
 This project leverages the **Gemini REST API** to analyze product catalogs and generate the best matches along with AI-powered top picks based on user prompts.  
 It also includes filters to help users refine their search results, as well as predefined prompts to make it easier for new users to explore and get familiar with the system.
 
 ---
 
-## ✨ Features
+## Features
 
 <table>
   <tr>
@@ -65,7 +66,7 @@ It also includes filters to help users refine their search results, as well as p
 
 ---
 
-## 🏗️ Architecture
+## Architecture
 
 ```mermaid
 graph TB
@@ -107,7 +108,7 @@ graph TB
 8. **Performance Optimization**: Used `useCallback` and `useMemo` for optimizing component re-renders.
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 ### Frontend
 
@@ -121,7 +122,7 @@ graph TB
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
 
@@ -201,10 +202,9 @@ graph TB
 └── 📄 index.js [Main entry point for the application]
 
 ```
-
 ---
 
-## 🌟 Future Prospects (v3.0)
+## Future Prospects
 
 1. **🤖 AI Playground**
    - Allow users to experiment with **custom LLMs**, system prompts, and fine-tuned configurations.
@@ -237,6 +237,6 @@ graph TB
     <strong>Made with ⚡ by Shobhit Tiwari</strong>
   </p>
   <p>
-    <a href="https://github.com/Shobhit141141/previwer">🌟 on GitHub</a>
+    <a href="https://github.com/Shobhit141141/ProductApp">🌟 on GitHub</a>
   </p>
 </div>
