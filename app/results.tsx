@@ -10,6 +10,7 @@ import { MotiView } from "moti";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { FlatList, Image, Modal, Text, TextInput, TouchableOpacity, View } from "react-native";
 import productsData from "../db/db.json";
+import FilterModal from "@/components/modal";
 
 
 /**
@@ -50,13 +51,6 @@ export default function ResultsScreen() {
 
   const filteredRecommendations = useMemo(() => {
     let filtered = [...recommendations];
-
-    // Putting AI Top Picks at the top
-    filtered.sort((a, b) => {
-      if (a.isTopPick && !b.isTopPick) return -1;
-      if (!a.isTopPick && b.isTopPick) return 1;
-      return 0;
-    });
 
     // Search filter
     if (searchText.trim()) {
@@ -117,78 +111,14 @@ export default function ResultsScreen() {
           </View>
         </View>
 
-        {/* Search Bar */}
-        <View className="bg-white rounded-lg flex-row items-center px-3 py-1 mb-3">
-          <Feather name="search" size={20} color="#666" />
-          <TextInput
-            placeholder="Search in results..."
-            value={searchText}
-            placeholderTextColor="#999999"
-            selectionColor="#00000050"
-            onChangeText={setSearchText}
-            className="flex-1 ml-2 text-gray-800 font-serif h-12"
-          />
-          {searchText ? (
-            <TouchableOpacity onPress={() => setSearchText("")}>
-              <Feather name="x" size={18} color="#666" />
-            </TouchableOpacity>
-          ) : null}
-        </View>
-
-        {/* Filter Controls */}
-        <View className="flex-row items-center justify-between">
-          <TouchableOpacity
-            onPress={() => setShowFilters(true)}
-            className="bg-white rounded-lg px-3 py-2 flex-row items-center"
-          >
-            <Ionicons name="options" size={20} color="black" />
-            <Text className="text-black ml-2 font-serif">Filters</Text>
-            {activeFiltersCount > 0 && (
-              <View className="bg-red-500 rounded-full w-5 h-5 ml-2 items-center justify-center">
-                <Text className="text-white text-xs font-bold">{activeFiltersCount}</Text>
-              </View>
-            )}
-          </TouchableOpacity>
-
-          <Text className="text-white font-serif">
-            {filteredRecommendations.length} of {recommendations.length} results
-          </Text>
-        </View>
-
-        {/* Active Filters Display */}
-        {activeFiltersCount > 0 && (
-          <View className="flex-row flex-wrap mt-2">
-
-            {priceSort !== "none" && (
-              <View className="bg-orange-500 rounded-full px-3 py-1 mr-2 mb-1 flex-row items-center">
-                <Text className="text-white text-sm font-serif">
-                  Price: {priceSort === "asc" ? "Low to High" : "High to Low"}
-                </Text>
-                <TouchableOpacity onPress={() => setPriceSort("none")} className="ml-1">
-                  <Feather name="x-circle" size={14} color="white" />
-                </TouchableOpacity>
-              </View>
-            )}
-            {showOnlyTopPicks && (
-              <View className="bg-orange-500 rounded-full px-3 py-1 mr-2 mb-1 flex-row items-center">
-                <Text className="text-white text-sm font-serif">AI Top Picks</Text>
-                <TouchableOpacity onPress={() => setShowOnlyTopPicks(false)} className="ml-1">
-                  <Feather name="x-circle" size={14} color="white" />
-                </TouchableOpacity>
-              </View>
-            )}
-          </View>
-        )}
-      </View>
 
       {/* Filter Modal */}
-      <Modal
+      <FilterModal
         visible={showFilters}
-        transparent
-        animationType="fade"
-        onRequestClose={() => setShowFilters(false)}
+
+        onClose={() => setShowFilters(false)}
       >
-        <View className="flex-1 bg-black/80 justify-end">
+        <View className="flex-1 justify-end">
           <View className="bg-white rounded-t-xl p-6">
             <View className="flex-row justify-between items-center mb-6">
               <Text className="text-xl font-bold-serif">Filters</Text>
@@ -261,7 +191,72 @@ export default function ResultsScreen() {
             </View>
           </View>
         </View>
-      </Modal>
+      </FilterModal>
+        {/* Search Bar */}
+        <View className="bg-white rounded-lg flex-row items-center px-3 py-1 mb-3">
+          <Feather name="search" size={20} color="#666" />
+          <TextInput
+            placeholder="Search in results..."
+            value={searchText}
+            placeholderTextColor="#999999"
+            selectionColor="#00000050"
+            onChangeText={setSearchText}
+            className="flex-1 ml-2 text-gray-800 font-serif h-12"
+          />
+          {searchText ? (
+            <TouchableOpacity onPress={() => setSearchText("")}>
+              <Feather name="x" size={18} color="#666" />
+            </TouchableOpacity>
+          ) : null}
+        </View>
+
+        {/* Filter Controls */}
+        <View className="flex-row items-center justify-between">
+          <TouchableOpacity
+            onPress={() => setShowFilters(true)}
+            className="bg-white rounded-lg px-3 py-2 flex-row items-center"
+          >
+            <Ionicons name="options" size={20} color="black" />
+            <Text className="text-black ml-2 font-serif">Filters</Text>
+            {activeFiltersCount > 0 && (
+              <View className="bg-red-500 rounded-full w-5 h-5 ml-2 items-center justify-center">
+                <Text className="text-white text-xs font-bold">{activeFiltersCount}</Text>
+              </View>
+            )}
+          </TouchableOpacity>
+
+          <Text className="text-white font-serif">
+            {filteredRecommendations.length} of {recommendations.length} results
+          </Text>
+        </View>
+
+        {/* Active Filters Display */}
+        {activeFiltersCount > 0 && (
+          <View className="flex-row flex-wrap mt-2">
+
+            {priceSort !== "none" && (
+              <View className="bg-orange-500 rounded-full px-3 py-1 mr-2 mb-1 flex-row items-center">
+                <Text className="text-white text-sm font-serif">
+                  Price: {priceSort === "asc" ? "Low to High" : "High to Low"}
+                </Text>
+                <TouchableOpacity onPress={() => setPriceSort("none")} className="ml-1">
+                  <Feather name="x-circle" size={14} color="white" />
+                </TouchableOpacity>
+              </View>
+            )}
+            {showOnlyTopPicks && (
+              <View className="bg-orange-500 rounded-full px-3 py-1 mr-2 mb-1 flex-row items-center">
+                <Text className="text-white text-sm font-serif">AI Top Picks</Text>
+                <TouchableOpacity onPress={() => setShowOnlyTopPicks(false)} className="ml-1">
+                  <Feather name="x-circle" size={14} color="white" />
+                </TouchableOpacity>
+              </View>
+            )}
+          </View>
+        )}
+      </View>
+
+
 
       {/* Results */}
       <FlatList

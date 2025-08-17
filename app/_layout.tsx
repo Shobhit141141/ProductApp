@@ -17,7 +17,6 @@ export default function RootLayout() {
 
   const prepare = useCallback(async () => {
     await SplashScreen.preventAutoHideAsync();
-    await new Promise((resolve) => setTimeout(resolve, 30000));
     await SplashScreen.hideAsync();
   }, []);
 

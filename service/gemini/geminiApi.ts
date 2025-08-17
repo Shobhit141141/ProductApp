@@ -43,10 +43,7 @@ export const getRecommendations = async (prompt: string): Promise<Recommendation
 
     const data = await response.json();
     let text: string | undefined = data?.candidates?.[0]?.content?.parts?.[0]?.text;
-
-
-    console.log(GEMINI_API_KEY)
-
+    
     if (!text) return [];
 
     text = text.trim().replace(/^```json\s*/, "").replace(/```$/, "");
